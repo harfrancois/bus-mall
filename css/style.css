@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  
+  
+}
+
+body {
+  
+  background-color: blueviolet;
+}
+
+header {
+  width: 130rem;
+  height: 5rem;
+  background-color: cornflowerblue;
+}
+
+
+main {
+  width: 130rem;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 30rem 5rem 15rem ;
+  background-color: darkkhaki;
+}
+
+#result {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: darkslateblue;
+  border: 0.4rem solid black;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+#select {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  background-color: deepskyblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 0.4rem solid black;
+}
+
+
+
+#button{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  text-align: center;
+}
+
+section {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  background-color: fuchsia;
+  display: flex;
+}
+
+footer {
+  width: 130rem;
+  height: 5rem;
+  text-align: center;
+  background-color: green;
+}
