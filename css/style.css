@@ -15,6 +15,9 @@ header {
   background-color: cornflowerblue;
 }
 
+h1 {
+  font-size: 4rem;
+}
 
 main {
   width: 130rem;
@@ -32,9 +35,14 @@ main {
   background-color: darkslateblue;
   border: 0.4rem solid black;
   text-align: center;
+  
+}
+li {
+  font-size: 1.5rem;
 }
 
 h2 {
+  font-size: 3rem;
   margin-top: 2rem;
 }
 
@@ -48,6 +56,7 @@ h2 {
   justify-content: space-between;
   align-items: flex-start;
   border: 0.4rem solid black;
+  cursor: pointer;
 }
 
 
@@ -58,6 +67,23 @@ h2 {
   grid-column-start: 2;
   grid-column-end: 5;
   text-align: center;
+  background-color: rgba(186, 11, 11, 0.734);
+  color: rgb(9, 1, 1);
+  padding: 1rem 1.5rem;
+  width: max-content;
+  height: max-content;
+  font-size: 1.5rem;
+  margin: 1rem;
+  pointer-events: none;
+}
+#button.clicks-allowed {
+  background-color: rgb(215, 110, 45);
+  color: rgb(14, 1, 1);
+  cursor: pointer;
+  pointer-events: auto;
+}
+#button.clicks-allowed:hover {
+  background-color: rgb(182, 34, 223)
 }
 
 section {
@@ -67,6 +93,7 @@ section {
   grid-column-end: 5;
   background-color: fuchsia;
   display: flex;
+  font-size: 2rem;
 }
 
 footer {
