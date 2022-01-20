@@ -1,7 +1,6 @@
 'use strict';
 
 const container = document.getElementById('select');
-const submit = document.getElementById('button');
 
 let image1 = document.getElementById('img1');
 let image2 = document.getElementById('img2');
@@ -58,26 +57,64 @@ function handelClicks(event) {
   }
   if (counter === maxCount) {
     container.removeEventListener('click', handelClicks);
-    submit.className = 'clicks-allowed';
-    submit.addEventListener('click', buttonClick);
-  }
-  renderItem();
-}
-function buttonClick(event) {
-  if (counter === maxCount) {
-    renderResult();
+    renderChart();
+  } else {
+    renderItem();
   }
 }
-function renderResult() {
-  let ul = document.querySelector('ul');
-  for (let i = 0; i < itemArray.length; i++) {
-    let message = `${itemArray[i].name} had ${itemArray[i].views} views and was clicked on ${itemArray[i].clicks} times.`;
-    let li = document.createElement('li');
-    li.textContent = message;
-    ul.appendChild(li);
-  }
 
+function renderChart() {
+  let itemName = [];
+  let itemView = [];
+  let itemClick = [];
+  for (let i = 0; i < itemArray.length; i++){
+    itemName.push(itemArray[i].name);
+    itemView.push(itemArray[i].views);
+    itemClick.push(itemArray[i].clicks);
+  }
+  const data = {
+    labels: itemName,
+    datasets: [{
+      label: 'Numbers Of Views',
+      data: itemView,
+      backgroundColor: [
+        'rgba(255, 0, 255, 0.8)',
+      ],
+      borderColor: [
+        'rgb(1, 191, 255, 1)',
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Numbers Of Clicks',
+      data: itemClick,
+      backgroundColor: [
+        'rgba(96, 0, 128, 0.8)',
+      ],
+      borderColor: [
+        'rgb(0, 191, 255, ,1)',
+      ],
+      borderWidth: 1
+    }]
+  };
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  };
+  Chart.defaults.font.size = 15;
+  const myChart = new Chart(
+    document.getElementById('myCanvas'),
+    config
+  );
 }
+
 new Item('bag');
 new Item('banana');
 new Item('bathroom');

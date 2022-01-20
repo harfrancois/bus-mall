@@ -12,7 +12,7 @@ body {
 header {
   width: 130rem;
   height: 5rem;
-  background-color: cornflowerblue;
+  background-color: rgb(128, 24, 255);
 }
 
 h1 {
@@ -23,23 +23,12 @@ main {
   width: 130rem;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 30rem 5rem 15rem ;
+  grid-template-rows: 30rem 20rem ;
   background-color: darkkhaki;
 }
 
-#result {
-  grid-row-start: 1;
-  grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: darkslateblue;
-  border: 0.4rem solid black;
-  text-align: center;
-  
-}
-li {
-  font-size: 1.5rem;
-}
+
+
 
 h2 {
   font-size: 3rem;
@@ -59,46 +48,32 @@ h2 {
   cursor: pointer;
 }
 
-
-
-#button{
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 5;
-  text-align: center;
-  background-color: rgba(186, 11, 11, 0.734);
-  color: rgb(9, 1, 1);
-  padding: 1rem 1.5rem;
-  width: max-content;
-  height: max-content;
-  font-size: 1.5rem;
-  margin: 1rem;
-  pointer-events: none;
-}
-#button.clicks-allowed {
-  background-color: rgb(215, 110, 45);
-  color: rgb(14, 1, 1);
-  cursor: pointer;
-  pointer-events: auto;
-}
-#button.clicks-allowed:hover {
-  background-color: rgb(182, 34, 223)
-}
-
 section {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 2;
-  grid-column-end: 5;
-  background-color: fuchsia;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: rgb(255, 140, 16);
   display: flex;
   font-size: 2rem;
 }
 
+#chart {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  background-color: greenyellow
+  
+}
+#myCanvas {
+  max-width: 97.5rem;
+  max-height: 20rem;
+  
+}
 footer {
   width: 130rem;
   height: 5rem;
   text-align: center;
-  background-color: green;
+  background-color: rgb(0, 164, 234);
 }
