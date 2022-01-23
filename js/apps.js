@@ -12,9 +12,9 @@ let counter = 0;
 let maxCount = 25;
 
 function Item(name) {
+  this.name = name;
   this.views = 0;
   this.clicks = 0;
-  this.name = name;
   this.src = `images/${name}.jpg`;
   itemArray.push(this);
 }
@@ -46,6 +46,7 @@ function renderItem() {
   itemArray[item3].views++;
 
 }
+
 function handelClicks(event) {
   counter++;
   let itemClicked = event.target.alt;
@@ -61,7 +62,29 @@ function handelClicks(event) {
   } else {
     renderItem();
   }
+
 }
+
+function packItem() {
+  let itemList = JSON.stringify(itemArray);
+  localStorage.setItem('picks', itemList);
+}
+
+function unpackItem() {
+  let myClicks = localStorage.getItem('picks');
+  if (myClicks) {
+    let parseItem = JSON.parse(myClicks);
+    for (let picks of parseItem) {
+      // let name = picks.name;
+      // let views = picks.views;
+      // let clicks = picks.clicks;
+      // let src = picks.src;
+      itemArray.push(parseItem);
+      renderChart();
+    }
+  }
+}
+
 
 function renderChart() {
   let itemName = [];
@@ -113,6 +136,8 @@ function renderChart() {
     document.getElementById('myCanvas'),
     config
   );
+  packItem();
+
 }
 
 new Item('bag');
@@ -135,6 +160,8 @@ new Item('unicorn');
 new Item('water-can');
 new Item('wine-glass');
 
+unpackItem();
 renderItem();
 
 container.addEventListener('click', handelClicks);
+
