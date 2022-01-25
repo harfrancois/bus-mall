@@ -11,12 +11,47 @@ let index = [];
 let counter = 0;
 let maxCount = 25;
 
-function Item(name) {
+
+
+function Item(name, views = 0, clicks = 0) {
   this.name = name;
-  this.views = 0;
-  this.clicks = 0;
+  this.views = views;
+  this.clicks = clicks;
   this.src = `images/${name}.jpg`;
   itemArray.push(this);
+}
+
+function unpackItem() {
+  let myClicks = localStorage.getItem('picks');
+  if (myClicks) {
+    let parseItem = JSON.parse(myClicks);
+    for (let picks of parseItem) {
+      let name = picks.name;
+      let views = picks.views;
+      let clicks = picks.clicks;
+      new Item(name, views, clicks);
+    }
+  } else {
+    new Item('bag');
+    new Item('banana');
+    new Item('bathroom');
+    new Item('boots');
+    new Item('breakfast');
+    new Item('bubblegum');
+    new Item('chair');
+    new Item('cthulhu');
+    new Item('dog-duck');
+    new Item('dragon');
+    new Item('pen');
+    new Item('pet-sweep');
+    new Item('scissors');
+    new Item('shark');
+    new Item('sweep');
+    new Item('tauntaun');
+    new Item('unicorn');
+    new Item('water-can');
+    new Item('wine-glass');
+  }
 }
 
 function getRandom() {
@@ -70,27 +105,11 @@ function packItem() {
   localStorage.setItem('picks', itemList);
 }
 
-function unpackItem() {
-  let myClicks = localStorage.getItem('picks');
-  if (myClicks) {
-    let parseItem = JSON.parse(myClicks);
-    for (let picks of parseItem) {
-      // let name = picks.name;
-      // let views = picks.views;
-      // let clicks = picks.clicks;
-      // let src = picks.src;
-      itemArray.push(parseItem);
-      renderChart();
-    }
-  }
-}
-
-
 function renderChart() {
   let itemName = [];
   let itemView = [];
   let itemClick = [];
-  for (let i = 0; i < itemArray.length; i++){
+  for (let i = 0; i < itemArray.length; i++) {
     itemName.push(itemArray[i].name);
     itemView.push(itemArray[i].views);
     itemClick.push(itemArray[i].clicks);
@@ -139,28 +158,8 @@ function renderChart() {
   packItem();
 
 }
-
-new Item('bag');
-new Item('banana');
-new Item('bathroom');
-new Item('boots');
-new Item('breakfast');
-new Item('bubblegum');
-new Item('chair');
-new Item('cthulhu');
-new Item('dog-duck');
-new Item('dragon');
-new Item('pen');
-new Item('pet-sweep');
-new Item('scissors');
-new Item('shark');
-new Item('sweep');
-new Item('tauntaun');
-new Item('unicorn');
-new Item('water-can');
-new Item('wine-glass');
-
 unpackItem();
+
 renderItem();
 
 container.addEventListener('click', handelClicks);
